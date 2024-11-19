@@ -152,7 +152,7 @@ function Navbar() {
                         ) : (
                             <>
                                 <Link
-                                    className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600"
+                                    className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600"
                                     to="/signup">
                                     Sign up
                                 </Link>
@@ -168,23 +168,29 @@ function Navbar() {
 
                 {/* Mobile Menu */}
                 {isOpen && (
-                    <div className="md:hidden lg:hidden mt-4 space-y-4 px-4 text-center">
+                    <div className="md:hidden lg:hidden mt-4 space-y-4 px-4 text-center last:mb-2">
                         <hr className="border-0.5 h-0.5 bg-transparent bg-gradient-to-r from-transparent via-sky-300 to-transparent" />
                         <Link
                             className="block text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
-                            to="/">
+                            to="/" 
+                            onClick={toggleMenu}
+                        >
                             Home
                         </Link>
                         <hr className="border-0.5 h-0.5 bg-gradient-to-r from-gray-400 via-gray-900 to-gray-400 rounded-full" />
                         <Link
                             className="block text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
-                            to="/about">
+                            to="/about"
+                            onClick={toggleMenu}
+                        >
                             About
                         </Link>
                         <hr className="border-0.5 h-0.5 bg-gradient-to-r from-gray-400 via-gray-900 to-gray-400 rounded-full" />
                         <Link
                             className="block text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
-                            to="/contact-us">
+                            to="/contact-us" 
+                            onClick={toggleMenu}
+                        >
                             Contact Us
                         </Link>
                         <hr className="border-0.5 h-0.5 bg-gradient-to-r from-gray-400 via-gray-900 to-gray-400 rounded-full" />
@@ -192,13 +198,17 @@ function Navbar() {
                         { !authStatus && (
                             <>
                                 <Link
-                                    className="block w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600"
-                                    to="/signup">
+                                    className="block w-full bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600"
+                                    to="/signup"
+                                    onClick={toggleMenu}
+                                >
                                     Sign up
                                 </Link>
                                 <Link
                                     className="block w-full bg-blue-600 dark:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-500 dark:hover:bg-blue-600"
-                                    to="/login">
+                                    to="/login"
+                                    onClick={toggleMenu}
+                                >
                                     Login
                                 </Link>
                             </>
