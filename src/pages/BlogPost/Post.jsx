@@ -29,7 +29,7 @@ export default function Post() {
         appwriteService.deleteFile(post.img_url);
         Swal.fire({
           position: 'bottom-end',
-          icon:  'success',
+          icon: 'success',
           title: 'Post Deleted Successfully!',
           showConfirmButton: false,
           timer: 3000, // Auto-close after 3 seconds

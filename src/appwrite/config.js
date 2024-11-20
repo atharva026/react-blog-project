@@ -16,10 +16,15 @@ export class Service {
     }
 
     // Create a new post document
-    async createPost({ title, slug, content, img_url, status, userId,username }) {
+    async createPost({ title, slug, content, img_url, status, userId, username }) {
         try {
-            const documentId = `${slug}-${ID.unique()}`;
-            return await this.databases.createDocument(
+            // Generate unique document ID within the 36-character limit
+            const uniqueId = ID.unique();
+            const truncatedSlug = slug.slice(0, Math.max(0, 36 - uniqueId.length - 1)); // Ensure space for unique ID and separator
+            const documentId = `${truncatedSlug}-${uniqueId}`.slice(0, 36);
+
+            // Create the document
+            const response = await this.databases.createDocument(
                 conf.appwriteDatabaseID,
                 conf.appwriteCollectionID,
                 documentId,
@@ -29,15 +34,26 @@ export class Service {
                     img_url,
                     status,
                     userId,
-                    username
+                    username,
                 }
             );
+
+            // Check if the response is valid
+            if (response && response.$id) {
+                return {
+                    success: true,
+                    message: "Post created successfully!",
+                    data: response, // Return the response object
+                };
+            } else {
+                throw new Error("Invalid response: Document creation failed.");
+            }
         } catch (error) {
             console.error("Error creating post:", error);
-    
+
             return {
                 success: false,
-                message: error.message || "Failed to create post",
+                message: error.message || "Failed to create post.",
             };
         }
     }

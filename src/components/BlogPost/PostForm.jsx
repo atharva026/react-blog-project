@@ -96,7 +96,7 @@ function PostForm({ post }) {
                         username: userData.name
                     });
 
-                    if (dbPost) {
+                    if (dbPost.success) {
                         Swal.fire({
                             position: 'bottom-end',
                             icon: 'success',
