@@ -193,10 +193,11 @@ function Navbar() {
                         >
                             Contact Us
                         </Link>
-                        <hr className="border-0.5 h-0.5 bg-gradient-to-r from-gray-400 via-gray-900 to-gray-400 rounded-full" />
 
                         { !authStatus && (
                             <>
+                                <hr className="border-0.5 h-0.5 bg-gradient-to-r from-gray-400 via-gray-900 to-gray-400 rounded-full" />
+
                                 <Link
                                     className="block w-full bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600"
                                     to="/signup"

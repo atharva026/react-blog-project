@@ -9,7 +9,7 @@ function PostCard({
     status,
     $createdAt
 }) {
-    const imageUrl = img_url ? appwriteService.getFilePreview(img_url) : 'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg';
+    const placeholderUrl = "https://placehold.co/600x400/EEE/31343C?font=montserrat&text=Image\nNot+Found";
 
     const dateCreated = $createdAt ? new Date($createdAt) : ''
 
@@ -17,9 +17,10 @@ function PostCard({
         <div className="mx-auto mb-2 w-64 h-80 bg-white dark:bg-gray-800 rounded-3xl shadow-lg lg:hover:shadow-xl lg:transition-transform lg:hover:scale-105 lg:duration-200 lg:ease-in-out">
             <div className="dark:bg-white w-full h-1/2 rounded-t-3xl overflow-hidden flex justify-center">
                 <img
-                    src={imageUrl}
+                    src={img_url ? appwriteService.getFilePreview(img_url) : placeholderUrl}
                     alt={title}
                     className="object-contain w-full h-full"
+                    onError={(e) => { e.target.src = placeholderUrl; }}
                 />
             </div>
             <hr className="border-t border-gray-300 dark:border-gray-600" />

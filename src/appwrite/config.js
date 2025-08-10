@@ -164,8 +164,7 @@ export class Service {
 
     // Get a preview URL for a file
     getFilePreview(fileId) {
-        // console.log('fileId', fileId)
-        return this.storage.getFilePreview(
+        return this.storage.getFileView(
             conf.appwriteStorageID,
             fileId
         );

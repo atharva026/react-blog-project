@@ -3,7 +3,6 @@ import userService from '../../appwrite/user';
 import { useParams } from 'react-router-dom';
 import { Spinner } from '../../components';
 import AllPost from '../BlogPost/MyPost';
-import './user.css'
 
 function UserPorfile() {
 
@@ -32,16 +31,8 @@ function UserPorfile() {
                 <img src="/images/nav_logo.png" alt="Profile Logo"
                     className="w-24 h-24 sm:h-28 mt-10 rounded-full border-4 border-gray-900 dark:border-cyan-500 bg-slate-300 translate-x-20 md:translate-x-0 -translate-y-20 " />
 
-                {/* <!-- Username Text --> */}
-                {/* <div className="-translate-y-10">
-                    <span className="text-lg sm:text-2xl font-semibold text-gray-900 dark:text-gray-100">
-                        {user ? (user.name ? user.name : 'Not available') : 'Loading...'}
-                    </span>
-                </div> */}
-                <div id='username' className="-translate-y-10 w-2/3 overflow-hidden text-ellipsis whitespace-nowrap">
-                    <span className="text-lg sm:text-2xl ">
-                        {user ? (user.name ? user.name : 'Not available') : 'Loading...'}
-                    </span>
+                <div className="-translate-y-10 w-2/3 text-ellipsis whitespace-nowrap text-xl sm:text-2xl md:text-4xl font-semibold text-black dark:text-white">
+                    {user ? (user.name ? user.name : 'Not available') : 'Loading...'}
                 </div>
             </div>
 

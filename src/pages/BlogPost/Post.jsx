@@ -14,6 +14,8 @@ export default function Post() {
   const userData = useSelector((state) => state.auth.userData);
   const isAuthor = post && userData ? post.userId === userData.$id : false;
 
+  const placeholderUrl = "https://placehold.co/600x400/EEE/31343C?font=montserrat&text=Image+Not+Found";
+
   useEffect(() => {
     if (slug) {
       appwriteService.getPost(slug).then((post) => {
@@ -56,9 +58,10 @@ export default function Post() {
         {/* Image Section */}
         <div className="overflow-hidden">
           <img
-            src={appwriteService.getFilePreview(post.img_url)}
-            alt={post.title}
-            className="rounded-t-lg bg-gray-300  object-contain w-full h-48 sm:h-64 md:h-80 lg:h-96"
+            src={post?.img_url ? appwriteService.getFilePreview('img_url') : placeholderUrl}
+            alt={post?.title || "No title"}
+            className="rounded-t-lg bg-gray-300 object-contain w-full h-48 sm:h-64 md:h-80 lg:h-96"
+            onError={(e) => { e.target.src = placeholderUrl; }}
           />
         </div>
 
