@@ -58,7 +58,7 @@ export default function Post() {
         {/* Image Section */}
         <div className="overflow-hidden">
           <img
-            src={post?.img_url ? appwriteService.getFilePreview('img_url') : placeholderUrl}
+            src={post?.img_url ? appwriteService.getFilePreview(post.img_url) : placeholderUrl}
             alt={post?.title || "No title"}
             className="rounded-t-lg bg-gray-300 object-contain w-full h-48 sm:h-64 md:h-80 lg:h-96"
             onError={(e) => { e.target.src = placeholderUrl; }}
